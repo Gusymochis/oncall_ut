@@ -2,7 +2,7 @@ import csv
 import os
 from datetime import date
 from datetime import datetime
-file_path = os.path.abspath('/home/pi/ut_repo/oncall_ut/timetable.csv')
+file_path = os.path.relpath('./timetable.csv')
 f = open( file_path, 'rU' ) #open the file in read universal mode
 for line in f:
        cells = line.split( "," )
