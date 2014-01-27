@@ -6,4 +6,4 @@ Steps:
 Create an entry in crontab to run shell script run_on_call.sh.
 $crontab -e
 Add an entry.  This schedule runs the shell script every min Mon - Fri.
-* * * * 1-5    /home/pi/dev/run_on_call.sh
+* * * * 1-5    ~/ut_repo/oncall_ut/bin/run_on_call.sh
