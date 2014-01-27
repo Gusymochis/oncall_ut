@@ -8,5 +8,5 @@ for line in f:
        cells = line.split( "," )
        date_object =  datetime.strptime(cells[0], '%m/%d/%Y')
        if datetime.combine(date_object,datetime.min.time()) == datetime.combine(date.today(), datetime.min.time()):
-            print cells[ 0 ] #since we want the first, second and third column 
+            print cells[ 0 ] + " " + cells[1] + " " + cells[2] #since we want the first, second and third column 
 
