@@ -12,16 +12,24 @@ smtp_server = properties.props['smtp_server']
 
 file_path = os.path.relpath('./'+properties.props['email_addr_filename'])
 
-def lookup_addr(name):
+addr_book = {}
+#def lookup_addr(name):
+def lookup_addr():
+  global addr_book
   f = open( file_path, 'rU' ) #open the file in read universal mode
   for line in f:
     cells = line.split( "," )
-    if (cells[0] == name):
-      return cells[1]
+    #if (cells[0] == name):
+    #  return cells[1]
+    addr_book={cells[0]:cells[1]}
+  f.close()
 
-def send_email(toaddr):
-    if not toaddr:
-        print 'toaddr is required'
+
+#def send_email(toaddr):
+def send_email(name):
+    global addr_book
+    if not name:
+        print 'name is required'
         return;
     #email body
     msg = MIMEText('get ready')
@@ -29,15 +37,16 @@ def send_email(toaddr):
     #put your from and to address here
     msg['Subject'] = 'You are on call'
     msg['From'] = fromaddr
-    msg['To'] = toaddr
+    toaddr = addr_book[name] 
+    msg['To'] = toaddr 
 
     s = smtplib.SMTP(smtp_server)
     s.sendmail(fromaddr, [toaddr], msg.as_string())
     s.quit
 
-def lookup_and_send(name):
-    toaddr = lookup_addr(name)
-    print "found address " + toaddr
-    send_email(toaddr)
-    print "sent email"
+#def lookup_and_send(name):
+    #toaddr = lookup_addr(name)
+    #print "found address " + addr_book[name] 
+    #send_email(toaddr)
+    #print "sent email"
 
