@@ -1,10 +1,10 @@
 import tornado.ioloop
 import tornado.web
-import parse_csv
+import new_parse_csv
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    self.write(parse_csv.get_oncall())
+    self.write(new_parse_csv.get_oncall())
 
 application = tornado.web.Application([
   (r"/", MainHandler),
