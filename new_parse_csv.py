@@ -1,7 +1,7 @@
 import csv
 import os
 import datetime
-import espeak
+#import espeak
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
@@ -25,7 +25,7 @@ def get_oncall():
     date_object =  datetime.strptime(cells[0], '%m/%d/%Y')
    
     if datetime.combine(date_object,datetime.min.time()) == compute_monday():
-        os.system('espeak "on call" + cells[ 0 ] + " " + cells[1] + " " + cells[2]')
+        #os.system('espeak "on call" + cells[ 0 ] + " " + cells[1] + " " + cells[2]')
         return cells[ 0 ] + " " + cells[1] + " " + cells[2] #since we want the first, second and third column
 
 
