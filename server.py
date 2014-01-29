@@ -9,7 +9,9 @@ cwd = os.getcwd()
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
     #self.write(parse_csv.get_oncall())
-    self.render("index.html", names=new_parse_csv.get_oncall())
+    v_img1="t.png"
+    v_img2="m.png"
+    self.render("index.html", names=new_parse_csv.get_oncall(), img1=v_img1, img2=v_img2)
 
 application = tornado.web.Application([
   (r"/", MainHandler),

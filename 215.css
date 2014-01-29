@@ -442,6 +442,13 @@ header h2 {
     display:block;
     float: right;
 }
+.divLeft img{
+    height:100px;
+    
+}
+.divRight img{
+    height:100px;
+}
 .left {
     float: left;
     max-width: 50%;
