@@ -1,7 +1,7 @@
 props = {}
-props['email_addr_filename']="email_addr.csv"
-props['smtp_server']="mail.server.com"
-props['from_addr']="pi_ut@server.com"
+props['email_addr_filename']="email_addr2.csv"
+props['smtp_server']="mailout.data.ie.intuit.net"
+props['from_addr']="tracy_fung@intuit.com"
 
-if len(props) == 0:
-  print 'WARNING: Define properties in properties.py'
+
+print props['from_addr']
