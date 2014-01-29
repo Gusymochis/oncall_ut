@@ -427,12 +427,37 @@ header h2 {
   width: 50%;
 }
 .explanation {
-  float: left;
   margin-left: 1.5%;
   max-width: 495px;
   padding-bottom: 15px;
   position: relative;
-  left: 50%;
+}
+.divLeft {
+    width:100px;
+    display:block;
+    float: left;
+}
+.divRight {
+    width:100px;
+    display:block;
+    float: right;
+}
+.left {
+    float: left;
+    max-width: 50%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow:ellipsis;
+    float: left;
+}
+.right {
+    width: 50%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow:ellipsis;
+    text-align: right;
 }
 .participation {
   background: #edf6ff;

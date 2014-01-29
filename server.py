@@ -14,6 +14,7 @@ class MainHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
   (r"/", MainHandler),
   (r"/(.*\.css)", tornado.web.StaticFileHandler, {"path": cwd}),
+  (r"/(.*\.png)", tornado.web.StaticFileHandler, {"path": cwd}),
 ])
 
 if __name__ == "__main__":
