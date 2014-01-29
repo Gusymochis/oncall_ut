@@ -58,7 +58,7 @@
 		</header>
 
 		<div class="summary" id="zen-summary" role="article">
-	        <p></p>
+	        <p>{{data['date']}}</p>
 		</div>  
   
 	</section>
@@ -69,10 +69,12 @@
                
                <h3></h3>
                  <div class=divLeft>
-                    <img src={{data['user1'][0]}} alt=data['user1'][0]/>
+                    <p>{{data['user1'][0]}}</p> 
+                    <img src={{data['user1'][1]}} alt={{data['user1'][0]}}>
                 </div>
                 <div class=divRight>
-                    <img src={{data['user2'][1]}} alt=data['user2'][0]/>
+                    <p>{{data['user2'][0]}}</p> 
+                    <img src={{data['user2'][1]}} alt={{data['user2'][0]}}>
             </div>
 
             </div>
