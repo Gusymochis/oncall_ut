@@ -5,29 +5,37 @@ import datetime
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
-file_path = os.path.relpath('./timetable.csv')
+
+attr={}
 
 def compute_monday():
-	today = date.today()
-        offset = (today.weekday() - 0) % 7
-	last_monday = today - timedelta(days=offset)
-        convertedDate =	datetime.combine(last_monday, datetime.min.time())
-	return convertedDate
+  today = date.today()
+  offset = (today.weekday() - 0) % 7
+  last_monday = today - timedelta(days=offset)
+  convertedDate =	datetime.combine(last_monday, datetime.min.time())
+  return convertedDate
 
 def get_oncall():
- f = open( file_path, 'rU' ) #open the file in read universal mode
- for line in f:
-    cells = line.split( "," )
-    dt =  datetime.strptime(cells[0], '%m/%d/%Y')
-    month,day,year = (int(x) for x in cells[0].split('/'))
+  global attr
+  f = open( 'timetable.csv', 'rU' ) #open the file in read universal mode
+  p = open( 'pictures.csv', 'r')
+  picture_path = {}
+  for line in p:
+    name,path=line.split('\n')[0].split(',')
+    picture_path[name]=path
+  for line in f:
+    oc_date,name1,name2 = line.split('\n')[0].split(',')
+    dt =  datetime.strptime(oc_date, '%m/%d/%Y')
+    month,day,year = (int(x) for x in oc_date.split('/'))
     oldDate = date(year,month,day)
     dayofWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    date_object =  datetime.strptime(cells[0], '%m/%d/%Y')
+    date_object =  datetime.strptime(oc_date, '%m/%d/%Y')
    
     if datetime.combine(date_object,datetime.min.time()) == compute_monday():
-        #os.system('espeak "on call" + cells[ 0 ] + " " + cells[1] + " " + cells[2]')
-        return cells[ 0 ] + " " + cells[1] + " " + cells[2] #since we want the first, second and third column
+      attr['date'] = oc_date
+      attr['user1'] = [name1,picture_path[name1]]
+      attr['user2'] = [name2,picture_path[name2]]
 
-
+  return attr
  
   

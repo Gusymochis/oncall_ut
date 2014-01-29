@@ -18,10 +18,8 @@ def lookup_addr():
   global addr_book
   f = open( file_path, 'rU' ) #open the file in read universal mode
   for line in f:
-    cells = line.split( "," )
-    #if (cells[0] == name):
-    #  return cells[1]
-    addr_book={cells[0]:cells[1]}
+    name,email = line.split(',')
+    addr_book[name]=email
   f.close()
 
 
@@ -42,7 +40,7 @@ def send_email(name):
 
     s = smtplib.SMTP(smtp_server)
     s.sendmail(fromaddr, [toaddr], msg.as_string())
-    s.quit
+    s.quit()
 
 #def lookup_and_send(name):
     #toaddr = lookup_addr(name)

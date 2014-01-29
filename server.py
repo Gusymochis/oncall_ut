@@ -13,6 +13,10 @@ class MainHandler(tornado.web.RequestHandler):
     v_img2="m.png"
     self.render("index.html", names=new_parse_csv.get_oncall(), img1=v_img1, img2=v_img2)
 
+class NameHandler(tornado.web.RequestHandler):
+  def get(self):
+    self.write(
+
 application = tornado.web.Application([
   (r"/", MainHandler),
   (r"/(.*\.css)", tornado.web.StaticFileHandler, {"path": cwd}),
