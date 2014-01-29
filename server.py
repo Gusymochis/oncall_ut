@@ -1,6 +1,6 @@
 import tornado.ioloop
 import tornado.web
-import new_parse_csv
+import parse_csv as parse
 import tornado.template
 import os
 
@@ -8,14 +8,11 @@ cwd = os.getcwd()
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    #self.write(parse_csv.get_oncall())
-    v_img1="t.png"
-    v_img2="m.png"
-    self.render("index.html", names=new_parse_csv.get_oncall(), img1=v_img1, img2=v_img2)
-
-class NameHandler(tornado.web.RequestHandler):
-  def get(self):
-    self.write(
+    attrib = parse.get_oncall()
+    print attrib['user1'][1]
+    #v_img1=attrib['user1'][1]
+    #v_img2=attrib['user2'][1]
+    self.render("index.html", data=attrib)
 
 application = tornado.web.Application([
   (r"/", MainHandler),
