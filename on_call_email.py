@@ -13,17 +13,20 @@ smtp_server = properties.props['smtp_server']
 file_path = os.path.relpath('./'+properties.props['email_addr_filename'])
 
 addr_book = {}
-#def lookup_addr(name):
 def lookup_addr():
   global addr_book
+  print file_path
   f = open( file_path, 'rU' ) #open the file in read universal mode
   for line in f:
-    name,email = line.split(',')
+    print line
+    #name,email = line.split(',')
+    data = line.split(',')
+    name = data[0]
+    email = data[1] 
     addr_book[name]=email
   f.close()
 
 
-#def send_email(toaddr):
 def send_email(name):
     global addr_book
     if not name:
@@ -39,12 +42,8 @@ def send_email(name):
     msg['To'] = toaddr 
 
     s = smtplib.SMTP(smtp_server)
+    print "send email to %s" % toaddr
     s.sendmail(fromaddr, [toaddr], msg.as_string())
     s.quit()
 
-#def lookup_and_send(name):
-    #toaddr = lookup_addr(name)
-    #print "found address " + addr_book[name] 
-    #send_email(toaddr)
-    #print "sent email"
 
